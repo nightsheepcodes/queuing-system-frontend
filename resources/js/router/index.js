@@ -5,8 +5,8 @@ import Login from '../components/Login.vue';
 import Queue from '../components/Queue.vue';
 
 const routes = [
+  { path: '/', name: 'queue', component: Queue },
   { path: '/login', name: 'login', component: Login },
-  { path: '/queue', name: 'queue', component: Queue },
 ];
 
 const router = createRouter({

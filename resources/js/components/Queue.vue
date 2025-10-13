@@ -19,26 +19,31 @@
             </div>  
         </header>
 
-            <aside>
-                <!-- side panel for Add Ticket Component -->
-                 <!-- Floating Button -->
-                <button
-                    @click="$emit('toggle')"
-                    class="fixed top-35 right-0 bg-white text-[#003D5B] p-1 pl-2 pr-2 rounded-tl-xl rounded-bl-xl shadow-lg hover:text-white hover:bg-[#029cda] transition"
-                >
-                    <span class="">
-                        <FontAwesomeIcon :icon="['fas', 'arrow-left-long']" />
-                    </span>
-                </button>
-            </aside>
+        <aside>
+            <!-- side panel for Add Ticket Component -->
+            <!-- Floating Button -->
+            <button
+                @click="$emit('toggle')"
+                class="fixed top-35 right-0 bg-white text-[#003D5B] p-1 pl-2 pr-2 rounded-tl-xl rounded-bl-xl shadow-lg hover:text-white hover:bg-[#029cda] transition"
+            >
+                <span class="">
+                    <FontAwesomeIcon :icon="['fas', 'arrow-left-long']" />
+                </span>
+            </button>
+        </aside>
 
-        <!-- LEFT SIDE -->
-        <!-- In Progress Ticket Card 1 -->
-        <!-- In Progress Ticket Card 2 -->
-
-        <!-- RIGHT SIDE -->
-        <!-- Next in Line Tickets Card -->
-
+        <div class="flex w-full px-10 py-15">
+            <!-- LEFT SIDE -->
+            <div class="flex flex-col w-full space-y-10">
+                <InProgress/> <!-- In Progress Ticket Card 1 -->
+                <InProgress/> <!-- In Progress Ticket Card 2 -->
+            </div>
+            
+            <!-- RIGHT SIDE -->
+            <div class="w-full flex justify-end">
+                <NextInLine/> <!-- Next in Line Tickets Card -->
+            </div>
+        </div>
 
         <!-- back button here -->
     </div>
@@ -47,6 +52,8 @@
 <script setup>
     import Clock from './tools/Clock.vue';
     import Date from './tools/Date.vue';
+    import InProgress from './cards/InProgress.vue';
+    import NextInLine from './cards/NextInLine.vue';
 
     import icon from '../../assets/login-icon.png';
 </script>

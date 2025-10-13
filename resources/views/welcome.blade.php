@@ -10,7 +10,7 @@
     </head>
     <body class="bg-[#007380] dark:bg-[#0a0a0a] text-[#1b1b18] flex items-center lg:justify-center min-h-screen flex-col">
            
-        <div id="app" class="w-screen bg-gradient-to-br from-[#003D5B]/15 to-[#003D5B]/75"></div>
+        <div id="app" class="w-full bg-gradient-to-br from-[#003D5B]/15 to-[#003D5B]/75"></div>
     
         <!-- <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 not-has-[nav]:hidden">
             @if (Route::has('login'))
