@@ -7,10 +7,10 @@ import router from './router';
 // Font Awesome imports
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 
 // Add icons to the library
-library.add(faUser, faLock);
+library.add(fas);
 
 const app = createApp(App);
 

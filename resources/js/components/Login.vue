@@ -67,7 +67,7 @@
                         class="w-full py-2
                                 bg-[#003D5B] text-white font-medium
                                 rounded-lg
-                                hover:bg-[#006F9C]
+                                hover:bg-[#029cda]
                                 transition-colors duration-300"
                     >
                     Login
