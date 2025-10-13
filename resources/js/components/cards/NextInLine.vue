@@ -3,12 +3,12 @@
         
         <h3 class="text-3xl font-bold text-[#003D5B]">Next in Line</h3>
 
-        <div class="mt-5 space-y-6 text-7xl">
-            <h1 class="font-bold text-[#003D5B]">DAM073010 <!-- data from queue list entry --></h1>
-            <h1 class="font-bold text-[#003D5B]">DAM073010 <!-- data from queue list entry --></h1>
-            <h1 class="font-bold text-[#003D5B]">DAM073010 <!-- data from queue list entry --></h1>
-            <h1 class="font-bold text-[#003D5B]">DAM073010 <!-- data from queue list entry --></h1>
-            <h1 class="font-bold text-[#003D5B]">DAM073010 <!-- data from queue list entry --></h1>
+        <div class="mt-5 space-y-6 text-7xl font-bold text-[#003D5B]">
+            <h1>DAM073010 <!-- data from queue list entry --></h1>
+            <h1>DAM073010 <!-- data from queue list entry --></h1>
+            <h1>DAM073010 <!-- data from queue list entry --></h1>
+            <h1>DAM073010 <!-- data from queue list entry --></h1>
+            <h1>DAM073010 <!-- data from queue list entry --></h1>
         </div>    
 
     </div>

@@ -24,7 +24,7 @@
             <!-- Floating Button -->
             <button
                 @click="$emit('toggle')"
-                class="fixed top-35 right-0 bg-white text-[#003D5B] p-1 pl-2 pr-2 rounded-tl-xl rounded-bl-xl shadow-lg hover:text-white hover:bg-[#029cda] transition"
+                class="fixed top-32 right-0 bg-white text-[#003D5B] p-1 px-2 rounded-tl-xl rounded-bl-xl shadow-lg hover:text-white hover:bg-[#029cda] transition"
             >
                 <span class="">
                     <FontAwesomeIcon :icon="['fas', 'arrow-left-long']" />
@@ -45,7 +45,15 @@
             </div>
         </div>
 
-        <!-- back button here -->
+        <!-- back button here, show only if signed in as admin-->
+         <button
+            @click="$emit('prev_page')"
+            class="fixed bottom-5 left-5 text-white p-1 px-2 shadow-xl rounded-2xl hover:bg-[#029cda] transition"
+        >
+            <span class="font-bold text-xl">
+                <FontAwesomeIcon :icon="['fas', 'arrow-left-long']" />
+            </span>
+        </button>
     </div>
 </template>
 
