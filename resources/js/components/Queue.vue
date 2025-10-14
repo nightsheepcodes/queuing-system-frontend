@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen flex flex-col">
+    <div class="relative overflow-hidden min-h-screen flex flex-col">
         <header class="w-full flex items-center justify-between p-4 bg-white shadow-md">
             
             <div class="flex items-center justify-center">
@@ -19,19 +19,6 @@
             </div>  
         </header>
 
-        <aside>
-            <!-- side panel for Add Ticket Component -->
-            <!-- Floating Button -->
-            <button
-                @click="$emit('toggle')"
-                class="fixed top-32 right-0 bg-white text-[#003D5B] p-1 px-2 rounded-tl-xl rounded-bl-xl shadow-lg hover:text-white hover:bg-[#029cda] transition"
-            >
-                <span class="">
-                    <FontAwesomeIcon :icon="['fas', 'arrow-left-long']" />
-                </span>
-            </button>
-        </aside>
-
         <div class="flex w-full px-10 py-15">
             <!-- LEFT SIDE -->
             <div class="flex flex-col w-full space-y-10">
@@ -44,6 +31,58 @@
                 <NextInLine/> <!-- Next in Line Tickets Card -->
             </div>
         </div>
+
+        <aside>
+            <!-- Backdrop -->
+            <transition
+                enter-active-class="transition-opacity duration-500"
+                leave-active-class="transition-opacity duration-500"
+                enter-from-class="opacity-0"
+                enter-to-class="opacity-100"
+                leave-from-class="opacity-100"
+                leave-to-class="opacity-0"
+            >
+                <div
+                    v-if="showAddTicket"
+                    @click="showAddTicket = false"
+                    class="fixed inset-0 bg-black/30 transition-opacity backdrop-blur-sm z-0"
+                ></div>
+            </transition>
+            
+            <!-- Slide Transition Wrapper -->
+            <transition
+                name="slide"
+                enter-active-class="transform transition duration-500"
+                enter-from-class="translate-x-full opacity-0"
+                enter-to-class="translate-x-0 opacity-100"
+                leave-active-class="transform transition duration-500"
+                leave-from-class="translate-x-0 opacity-100"
+                leave-to-class="translate-x-full opacity-0"
+            >
+
+                <!-- side panel for Add Ticket Component -->
+                <AddTicket
+                    v-if="showAddTicket"
+                    @submitted="handleTicketSubmitted"
+                />
+            
+            </transition>
+
+            <!-- Floating Button -->
+            <!-- Clicked: url have ./addding-ticket -->
+            <button
+                v-if="!showAddTicket"
+                @click="showAddTicket = !showAddTicket"
+                class="fixed top-32 right-0 bg-white text-[#003D5B] p-1 px-2 rounded-tl-xl rounded-bl-xl shadow-lg hover:text-white hover:bg-[#029cda] transition"
+            >
+                <span class="">
+                    <FontAwesomeIcon :icon="['fas', 'arrow-left-long']" />
+                </span>
+            </button>
+
+            <!-- Ticket Submitted Modal -->
+            <TicketSubmitted v-if="ticketSubmitted"/>
+        </aside>
 
         <!-- back button here, show only if signed in as admin-->
          <button
@@ -58,10 +97,46 @@
 </template>
 
 <script setup>
+    import { ref, onBeforeUnmount } from 'vue'
+
     import Clock from './tools/Clock.vue';
     import Date from './tools/Date.vue';
     import InProgress from './cards/InProgress.vue';
     import NextInLine from './cards/NextInLine.vue';
+    import AddTicket from './AddTicket.vue';
+    import TicketSubmitted from './tools/TicketSubmitted.vue';
 
     import icon from '../../assets/login-icon.png';
+
+
+    const showAddTicket = ref(false);
+    const ticketSubmitted = ref(false);
+
+    // keep timer ids to clear if component unmounts
+    let showTimer = null;
+    let hideTimer = null;
+
+    function handleTicketSubmitted() {
+        showAddTicket.value = false;
+
+        // clear any existing timers
+        clearTimeout(showTimer);
+        clearTimeout(hideTimer);
+
+        // show success after 1 ms
+        showTimer = setTimeout(() => {
+            ticketSubmitted.value = true;
+
+            // hide success after 2 seconds
+            hideTimer = setTimeout(() => {
+                ticketSubmitted.value = false
+            }, 2000)
+        }, 1)
+    }
+
+    onBeforeUnmount(() => {
+        clearTimeout(showTimer);
+        clearTimeout(hideTimer);
+    });
+
 </script>
