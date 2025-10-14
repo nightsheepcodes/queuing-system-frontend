@@ -87,6 +87,7 @@
 
     const { appContext } = getCurrentInstance();
     const systemName = appContext.config.globalProperties.$systemName;
+    const globalState = appContext.config.globalProperties.$globalState;
 
     const form = ref({
         email: "",
@@ -107,4 +108,8 @@
         // You’ll connect this to backend (Laravel) later
         router.push('/dashboard');
     };
+
+    function onLoginSuccess() {
+        globalState.loginSuccess = true
+    }
 </script>

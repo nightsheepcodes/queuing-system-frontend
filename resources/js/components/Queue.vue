@@ -86,6 +86,7 @@
 
         <!-- back button here, show only if signed in as admin-->
          <button
+            v-if="$globalState.loginSuccess"
             @click="$emit('prev_page')"
             class="fixed bottom-5 left-5 text-white p-1 px-2 shadow-xl rounded-2xl hover:bg-[#029cda] transition"
         >
@@ -97,7 +98,7 @@
 </template>
 
 <script setup>
-    import { ref, onBeforeUnmount } from 'vue'
+    import { ref, onBeforeUnmount } from 'vue';
 
     import Clock from './tools/Clock.vue';
     import Date from './tools/Date.vue';
@@ -108,6 +109,7 @@
 
     import icon from '../../assets/login-icon.png';
 
+    
 
     const showAddTicket = ref(false);
     const ticketSubmitted = ref(false);
@@ -115,6 +117,10 @@
     // keep timer ids to clear if component unmounts
     let showTimer = null;
     let hideTimer = null;
+
+
+
+    
 
     function handleTicketSubmitted() {
         showAddTicket.value = false;
@@ -139,4 +145,9 @@
         clearTimeout(hideTimer);
     });
 
+    
+    
+
+
+    
 </script>
