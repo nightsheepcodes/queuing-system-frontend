@@ -109,20 +109,14 @@
     import AddTicket from './AddTicket.vue';
     import TicketSubmitted from './tools/TicketSubmitted.vue';
 
-    import icon from '../../assets/login-icon.png';
-
-    
+    import icon from '../../assets/login-icon.png';    
 
     const showAddTicket = ref(false);
     const ticketSubmitted = ref(false);
 
     // keep timer ids to clear if component unmounts
     let showTimer = null;
-    let hideTimer = null;
-
-
-
-    
+    let hideTimer = null; 
 
     function handleTicketSubmitted() {
         showAddTicket.value = false;
@@ -145,9 +139,7 @@
     onBeforeUnmount(() => {
         clearTimeout(showTimer);
         clearTimeout(hideTimer);
-    });
-
-    
+    }); 
     
 
 
