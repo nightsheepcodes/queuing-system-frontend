@@ -17,7 +17,7 @@ const app = createApp(App);
 
 // Register globally
 const globalState = reactive({
-  loginSuccess: false
+  loginSuccess: true
 });
 
 

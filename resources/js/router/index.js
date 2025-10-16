@@ -1,14 +1,17 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-// Import your components
+// Components imports
 import Login from '../components/Login.vue';
 import Queue from '../components/Queue.vue';
+import Dashboard from '../components/dashboard/Dashboard.vue';
 
 const routes = [
   { path: '/', name: 'home', component: Queue },
   { path: '/queue', name: 'queue', component: Queue },
   { path: '/login', name: 'login', component: Login },
   //{ path: '/', redirect: '/queue' },
+
+  { path: '/dashboard', name: 'dashboard', component: Dashboard },
 ];
 
 const router = createRouter({

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-view /> <!-- <div> --> <!-- View Container, with vue-router -->
+    <router-view /> <!-- View Container, with vue-router -->
   </div>
 </template>
 
