@@ -41,19 +41,37 @@
             </div>
 
             <!-- Sidebar Menu Items -->            
-            <nav class="mt-4" v-if="isSidebarOpen">
-                <h3>MAIN</h3>
-                <ul>
-                    <router-link to="/dashboard" class="block p-3 hover:bg-gray-700">Dashboard</router-link>
-                    <router-link to="/tickets" class="block p-3 hover:bg-gray-700">Tickets</router-link>
-                    <router-link to="/queue-list" class="block p-3 hover:bg-gray-700">Queue List</router-link>
-                    <router-link to="/queue" class="block p-3 hover:bg-gray-700">Queue Display</router-link>
+            <nav class="text-[#003D5B] font-medium" v-if="isSidebarOpen">
+                <h3 class="px-10">MAIN</h3>
+                <ul class="mb-6">
+                    <router-link to="/dashboard" :class="navLinkClass">
+                        <span :class="iconClass">
+                            <FontAwesomeIcon :icon="['fas', 'gauge']" />
+                        </span>Dashboard</router-link>
+                    <router-link to="/tickets" :class="navLinkClass">
+                        <span :class="iconClass">
+                            <FontAwesomeIcon :icon="['fas', 'ticket']" />
+                        </span>Tickets</router-link>
+                    <router-link to="/queue-list" :class="navLinkClass">
+                        <span :class="iconClass">
+                            <FontAwesomeIcon :icon="['fas', 'people-line']" />
+                        </span>Queue List</router-link>
+                    <router-link to="/queue" :class="navLinkClass">
+                        <span :class="iconClass">
+                            <FontAwesomeIcon :icon="['fas', 'desktop']" />
+                        </span>Queue Display</router-link>
                 </ul>
 
-                <h3>ACCOUNT</h3>
+                <h3 class="px-10">ACCOUNT</h3>
                 <ul>
-                    <router-link to="/profile" class="block p-3 hover:bg-gray-700">Profile</router-link>
-                    <li class="p-3 hover:bg-gray-700 cursor-pointer">Logout</li>                    
+                    <router-link to="/profile" :class="navLinkClass">
+                        <span :class="iconClass">
+                            <FontAwesomeIcon :icon="['fas', 'user']" />
+                        </span>Profile</router-link>
+                    <li :class="navLinkClass">
+                        <span :class="iconClass">
+                            <FontAwesomeIcon :icon="['fas', 'right-from-bracket']" />
+                        </span>Logout</li>
                 </ul>
             </nav>
 
@@ -95,4 +113,10 @@
     function toggleSidebar() {
         isSidebarOpen.value = !isSidebarOpen.value;
     }
+
+
+
+    /* STYLES */
+    const navLinkClass = "group flex items-center px-12 py-2 text-[#003D5B] hover:bg-gray-700 hover:text-white transition-colors";
+    const iconClass = "mr-1 text-[#003D5B] text-xl group-hover:text-white";
 </script>
