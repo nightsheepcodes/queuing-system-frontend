@@ -12,7 +12,7 @@
         ]">
 
             <div class="flex justify-end">
-                <button @click="toggleSidebar" class="focus:outline-none">
+                <button @click="toggleSidebar" class="focus:outline-none cursor-pointer">
                     <span class="text-[#003D5B] text-lg">
                         <FontAwesomeIcon :icon="['fas', 'bars']" />
                     </span>
