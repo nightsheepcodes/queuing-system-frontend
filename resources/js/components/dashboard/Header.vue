@@ -2,9 +2,13 @@
     <header class="h-30 flex items-center justify-between px-10 pt-10 transition-all duration-300">
 
         <!-- Left -->
-        <div class="flex items-end space-x-8">
+        <div v-if="!showSearch" class="flex items-end space-x-8">
             <h1 class="text-3xl font-semibold text-white">Dashboard</h1>
             <Date class="text-[16px] text-gray-200 font-normal"></Date>
+        </div>
+
+        <div v-if="showSearch">
+            <h1 class="text-3xl font-semibold text-white">Searching...</h1>
         </div>
 
         <!-- Right -->
@@ -31,7 +35,7 @@
                         type="text"
                         v-model="searchQuery"
                         placeholder="Search..."
-                        class="w-100 py-1 text-[#003D5B] rounded-md focus:outline-none"
+                        class="w-230 py-1 text-[#003D5B] rounded-md focus:outline-none"
                     />                    
                     <button 
                         @click="toggleSearch" 
