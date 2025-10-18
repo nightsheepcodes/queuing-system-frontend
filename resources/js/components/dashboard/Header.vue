@@ -72,21 +72,21 @@
     // Inline transition behavior
     const onEnter = (el) => {
         el.style.opacity = 0;
-        el.style.transform = "translateX(2rem)";
+        el.style.transform = "translateX(1rem)";
         requestAnimationFrame(() => {
-            el.style.transition = "all 0.3s ease";
+            el.style.transition = "all 0.2s ease-in-out";
             el.style.opacity = 1;
             el.style.transform = "translateX(0)";
      });
     };
 
     const onLeave = (el) => {
-        el.style.transition = "all 0.3s ease";
+        el.style.transition = "all 0.2s ease-in-out";
         el.style.opacity = 1;
         el.style.transform = "translateX(0)";
         requestAnimationFrame(() => {
             el.style.opacity = 0;
-            el.style.transform = "translateX(2rem)";
+            el.style.transform = "translateX(1rem)";
         });
     };
 </script>
