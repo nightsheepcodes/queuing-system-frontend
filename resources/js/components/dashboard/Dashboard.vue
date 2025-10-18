@@ -8,10 +8,9 @@
             <!-- Header -->
             <Header></Header>
 
-            <!-- Main Content -->
-            <main class="flex-1 p-6 overflow-y-auto">
-                <p class="text-gray-700">Main content goes here...</p>
-            </main>
+            <!-- Content Area -->
+            <ContentArea></ContentArea>
+            
         </div>
     </div>
 </template>
@@ -19,6 +18,7 @@
 <script setup>
     import SidebarMenu from './Menu.vue';
     import Header from './Header.vue';
+    import ContentArea from './Main.vue';
     
     import { ref } from "vue";
 
