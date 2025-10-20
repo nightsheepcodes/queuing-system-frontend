@@ -2,12 +2,12 @@
     <header class="h-30 flex items-center justify-between px-10 pt-10 transition-all duration-300">
 
         <!-- Left -->
-        <div v-if="!showSearch" class="flex items-end space-x-8">
-            <h1 class="text-3xl font-semibold text-white">Dashboard</h1>
+        <div v-if="!isSearching" class="flex items-end space-x-8">
+            <h1 class="text-3xl font-semibold text-white">{{ pageName }}</h1>
             <Date class="text-[16px] text-gray-200 font-normal"></Date>
         </div>
 
-        <div v-if="showSearch">
+        <div v-if="isSearching">
             <h1 class="text-3xl font-semibold text-white">Searching...</h1>
         </div>
 
@@ -15,7 +15,7 @@
         <div class="flex items-center space-x-3 relative">
             <!-- Search Icon -->
             <button 
-                v-if="!showSearch" 
+                v-if="!isSearching" 
                 @click="toggleSearch" 
                 class="hover:text-gray-300 transition-colors cursor-pointer">
                 <FontAwesomeIcon :icon="['fas', 'search']" class="text-white text-xl"/>
@@ -27,7 +27,7 @@
                 @leave="onLeave"
             >
                 <div 
-                    v-if="showSearch" 
+                    v-if="isSearching" 
                     class="flex items-center space-x-2 absolute right-15 bg-white/75 backdrop-blur-md px-3 py-1 rounded-full"
                 >
                     <FontAwesomeIcon :icon="['fas', 'search']" class="text-[#003D5B]"/>
@@ -60,16 +60,29 @@
 </template>
 
 <script setup>
-    import { ref } from "vue";
+    import { ref, computed } from "vue";
+    import { useRoute } from "vue-router";
+    
     import Date from '../tools/Date.vue';
 
     import prof from '../../../assets/prof.jpg';
 
-    const showSearch = ref(false);
+    defineProps({
+        pageName: {
+            type: String,
+            default: "Dashboard",
+        },
+    });
+
+    const route = useRoute();
+
+    const pageName = computed(() => route.meta.title || "Page");
+
+    const isSearching = ref(false);
     const searchQuery = ref("");
 
     const toggleSearch = () => {
-        showSearch.value = !showSearch.value;
+        isSearching.value = !isSearching.value;
         searchQuery.value = "";
     };
 

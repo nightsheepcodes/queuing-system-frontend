@@ -17,9 +17,10 @@ const routes = [
   { path: '/dashboard',
     name: 'dashboard',
     component: Dashboard,
+    meta: { title: "Dashboard" },
     children: [
-      { path: 'tickets', component: Tickets },
-      { path: 'queue-list', component: QueueList },
+      { path: 'tickets', component: Tickets, meta: { title: "Tickets" }, },
+      { path: 'queue-list', component: QueueList, meta: { title: "Queue List" }, },
     ]},
 ];
 
