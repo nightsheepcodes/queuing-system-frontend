@@ -2,14 +2,36 @@
     <main class="flex-1 px-10 py-5 overflow-y-auto box-border">
         <!-- Top cards -->
         <div class="h-[35%] flex space-x-5 mb-[2rem]">
-            <!-- In progress -->
-            <div class="w-[50%]">
-                <InProgress 
-                    title="In Progress..."
-                    style_div="w-full h-full justify-center bg-white rounded-3xl"
-                    style_h3="text-2xl font-bold text-[#003D5B] text-left"
-                    :style_h1="currentH1Style"
-                    style_p="text-base text-gray-700"/>
+            <!-- In Progress Carousel -->
+            <div class="w-[50%] overflow-hidden relative">
+                <transition name="slide-x" mode="out-in">
+                    <InProgress
+                        v-if="inProgressList.length > 0"
+                        :key="currentCard.ticket_id"
+                        title="In Progress..."
+                        :queue-num="currentCard.queue_num"
+                        :ticket-id="currentCard.ticket_id"
+                        :it-staff="currentCard.it_staff"
+
+                        style_div="w-full h-full justify-center bg-white rounded-3xl"
+                        style_h3="text-2xl font-bold text-[#003D5B] text-left"
+                        style_h1="text-7xl font-bold text-[#003D5B] my-2"
+                        style_p="text-base text-gray-700"
+                    />
+                </transition>
+
+                <!-- Dots navigation -->
+                <div class="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                <button
+                    v-for="(item, i) in inProgressList"
+                    :key="item.ticket_id"
+                    @click="setIndex(i)"
+                    class="w-2 h-2 rounded-full"
+                    :class="i === currentIndex ? 'bg-[#003D5B]' : 'bg-gray-300'"
+                    aria-label="'Go to slide ' + (i + 1)"
+                ></button>
+                </div>
+
             </div>
 
             <!-- Total ticket in Queue today -->
@@ -83,11 +105,40 @@
 </template>
 
 <script setup>
-    import { ref } from "vue";
+    import { ref, computed, onMounted, onUnmounted, watch } from "vue";
     
     import InProgress from '../cards/InProgress.vue';
 
-    const currentH1Style = ref("text-7xl font-bold text-[#003D5B] my-5");
-
     const waiting = ref(15); // Example value for waiting in queue
+
+    // Simulated DB data
+    const queueEntries = ref([
+    { status: "InProgress", queue_num: "DAM073010", ticket_id: "INC000012496537", title: "Repairing System", it_staff: "Randy Damos" },
+    { status: "InProgress", queue_num: "DAM073012", ticket_id: "INC000012496538", title: "Replacing Mouse", it_staff: "Andy Sayre" },
+    { status: "Waiting", queue_num: "DAM073014", ticket_id: "INC000012496539", title: "Pending Review", it_staff: "Arl Ablanzar" },
+    ]);
+
+    const inProgressList = computed(() => queueEntries.value.filter(e => e.status === "InProgress").slice(0, 2));
+
+    const currentIndex = ref(0);
+    const currentCard = computed(() => {
+        return inProgressList.value.length ? inProgressList.value[currentIndex.value] : { ticket_id: "none" };
+    });
+
+    let intervalId = null;
+    function setIndex(i) {
+    currentIndex.value = i;
+    }
+    function startIntervalIfNeeded() {
+    clearInterval(intervalId);
+    if (inProgressList.value.length > 1) {
+        intervalId = setInterval(() => {
+        currentIndex.value = (currentIndex.value + 1) % inProgressList.value.length;
+        }, 5000);
+    }
+    }
+
+    onMounted(startIntervalIfNeeded);
+    onUnmounted(() => clearInterval(intervalId));
+    watch(inProgressList, startIntervalIfNeeded, { immediate: true });
 </script>
