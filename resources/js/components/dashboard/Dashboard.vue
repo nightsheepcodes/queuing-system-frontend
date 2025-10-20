@@ -1,7 +1,7 @@
 <template>
     <div class="flex h-screen">
         <!-- Sidebar -->
-        <SidebarMenu></SidebarMenu>
+        <SidebarMenu/>
         
         <!-- Main Section -->
         <div class="flex flex-col flex-1 transition-all duration-300">
@@ -9,8 +9,8 @@
             <Header></Header>
 
             <!-- Content Area -->
-            <ContentArea></ContentArea>
-            
+            <ContentArea v-if="route.path === '/dashboard'"></ContentArea>
+            <router-view/>
         </div>
     </div>
 </template>
@@ -19,8 +19,11 @@
     import SidebarMenu from './Menu.vue';
     import Header from './Header.vue';
     import ContentArea from './Main.vue';
-    
+        
     import { ref } from "vue";
+    import { useRoute } from "vue-router";
+
+    const route = useRoute();
 
     const isSidebarOpen = ref(true);
 

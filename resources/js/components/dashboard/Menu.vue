@@ -46,11 +46,11 @@
                     <span :class="iconClass">
                         <FontAwesomeIcon :icon="['fas', 'gauge']" />
                     </span>Dashboard</router-link>
-                <router-link to="/tickets" :class="navLinkClass">
+                <router-link to="/dashboard/tickets" :class="navLinkClass">
                     <span :class="iconClass">
                         <FontAwesomeIcon :icon="['fas', 'ticket']" />
                     </span>Tickets</router-link>
-                <router-link to="/queue-list" :class="navLinkClass">
+                <router-link to="/dashboard/queue-list" :class="navLinkClass">
                     <span :class="iconClass">
                         <FontAwesomeIcon :icon="['fas', 'people-line']" />
                     </span>Queue List</router-link>

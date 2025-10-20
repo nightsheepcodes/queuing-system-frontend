@@ -40,7 +40,7 @@
             </div>
         </div>
 
-        <aside>
+        <aside> <!-- Don't show when isAdminSignedIn -->
             <!-- Backdrop -->
             <transition
                 enter-active-class="transition-opacity duration-500"
@@ -92,7 +92,7 @@
             <TicketSubmitted v-if="ticketSubmitted"/>
         </aside>
 
-        <!-- back button here, show only if signed in as admin-->
+        <!-- back button here, Don't show when isAdminSignedIn-->
         <router-link to="/dashboard">
             <button
                 v-if="$globalState.loginSuccess"
