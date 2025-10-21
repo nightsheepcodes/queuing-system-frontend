@@ -47,7 +47,7 @@
             </transition>
 
             <!-- Profile Icon -->
-            <router-link to="/profile" class="">
+            <router-link to="/dashboard/my-profile" class="">
                 <img 
                     :src="prof" 
                     alt="Profile Icon" 
