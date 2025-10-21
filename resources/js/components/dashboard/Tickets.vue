@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col h-[calc(100vh-100px)] w-full px-10 py-5 box-border">
+    <div class="flex flex-col h-[calc(100vh-100px)] w-full px-10 py-5 box-border overflow-hidden">
                 <!-- Table Header -->
                 <div class="grid grid-cols-[150px_120px_220px_120px_160px_90px_100px] bg-gray-200 p-3 rounded-t-2xl">
                     <div :class="style_header">Ticket ID</div>
