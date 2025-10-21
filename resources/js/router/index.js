@@ -21,7 +21,7 @@ const routes = [
     children: [
       { path: 'tickets', component: Tickets, meta: { title: "Tickets" }, },
       { path: 'queue-list', component: QueueList, meta: { title: "Queue List" }, },
-      { path: 'my-profile', component: UserProfile, meta: { title: "Profile" }, },
+      { path: 'my-profile', component: UserProfile, meta: { title: "My Profile" }, },
     ]},
 ];
 
