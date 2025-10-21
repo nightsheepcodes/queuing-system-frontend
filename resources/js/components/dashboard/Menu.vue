@@ -66,10 +66,10 @@
                     <span :class="iconClass">
                         <FontAwesomeIcon :icon="['fas', 'user']" />
                     </span>Profile</router-link>
-                <li :class="navLinkClass">
+                <router-link to="/login" :class="navLinkClass">
                     <span :class="iconClass">
                         <FontAwesomeIcon :icon="['fas', 'right-from-bracket']" />
-                    </span>Logout</li>
+                    </span>Logout</router-link>
             </ul>
         </nav>
 
