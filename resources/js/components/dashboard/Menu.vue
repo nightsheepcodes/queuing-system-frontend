@@ -62,7 +62,7 @@
 
             <h3 class="px-10">ACCOUNT</h3>
             <ul>
-                <router-link to="/profile" :class="navLinkClass">
+                <router-link to="/dashboard/my-profile" :class="navLinkClass">
                     <span :class="iconClass">
                         <FontAwesomeIcon :icon="['fas', 'user']" />
                     </span>Profile</router-link>
